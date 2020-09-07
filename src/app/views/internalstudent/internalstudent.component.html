@@ -1,0 +1,93 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav d-md-down-none">
+    
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+     
+      <a class="nav nav-pills nav-justified" [routerLink]="['/login']"><i class="icon-graph"></i> &nbsp; Back to Home>>></a>
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+
+<div class="app-body" *ngIf="displayOtp">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              
+              <div class="card-body p-4">
+                <form novalidate [formGroup]="otpForm" >
+                  <h2>Enter OTP</h2>                
+                  <div class="input-group mb-3" >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input [ngClass]="{'is-invalid':g.otp.errors}" formControlName="otp" class="form-control" placeholder="OTP" autocomplete="OTP" required>
+                  </div>
+  
+                </form>
+              </div>
+              <div class="card-footer">
+                              
+                    <div class="pull-right">
+          <button type="submit" [disabled]="(otpForm.invalid)" (click)="SubmitOtp(otpForm)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                        Submit</button>
+                        <button (click)="displaySignup = false; displayOtp = false; displayResendOtp = true;"  type="reset" class="btn btn-sm btn-dark"><i class="angle-double-right"></i> Resend OTP</button>
+  
+                </div>
+                
+            </div> 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="app-body" *ngIf="displayInstruction">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div class="card mx-12">
+                <div class="card-header">
+             
+                    <h3 class="pull-left">INSTRUCTIONS</h3>           
+                   
+                  </div>
+              <div class="card-body p-12">
+                  - Duration for the test is <b>30Mins</b>.<br/><br/>
+                  - Kindly tick any one of the option given either a. or b. <br/><br/>
+                  - Think carefully before choosing an answer. <br/><br/>
+                  - You can only select an Option for each question.<br/><br/>
+                  - Kindly try to attempt maximum Questions.
+              </div>
+              <div class="card-footer">
+                              
+                    <div class="pull-right">
+                        <button type="submit" (click)="start()"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                          Start</button>
+                </div>
+                
+            </div> 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

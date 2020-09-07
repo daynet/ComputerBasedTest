@@ -1,0 +1,299 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav d-md-down-none">
+    
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+     
+      <a class="nav nav-pills nav-justified" [routerLink]="['/home']"><i class="icon-graph"></i> &nbsp; Back to Home>>></a>
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+<br/>
+<br/>
+<br/>
+<div class="container" *ngIf="displaySignup">
+<div class="animated fadeIn">
+        <div class="row"></div>
+        <form novalidate [formGroup]="signupForm">
+          <div class="col-sm-12">
+            <div class="card">
+               
+              <div class="card-header">
+               
+                <h3 class="text-center">APTITUDE TEST</h3>
+               
+              </div>
+              <div class="card-header">
+               
+             
+                  <strong>Fill in your Details</strong>
+                  <small>!!!</small>
+                </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-sm-4">
+                        <label for="level">Level* </label>
+                        <select  [ngClass]="{'is-invalid':f.levels.errors}" formControlName="levels" class="form-control" required>
+                          <option value = "" >---Select Class---</option>
+                          <option value = "1">S.S.1</option>
+                          <option value = "2">S.S.2</option>
+                          <option value = "3">S.S.3</option>
+                          <option value = "4">High School Graduate</option>
+                          </select>
+                      </div>
+                      <div class=" col-sm-4">
+                        <label for="program">Name of School* </label>
+                        <select  [ngClass]="{'is-invalid':f.school.errors}" formControlName="school" class="form-control" required>
+                            <option value = "" >---Select School---</option>
+                            <option *ngFor = "let c of schoolList.result" value="{{c.SchoolID}}">{{c.SchoolName}}</option>
+                            </select>
+                      </div>
+                      <div class=" col-sm-4">
+                          <label for="Date"><b>Date Of Test*</b> </label>
+                          <input [ngClass]="{'is-invalid':f.examDate.errors}" formControlName="examDate" class="form-control" required type="date">
+                      
+                    </div>
+                  </div>
+                    <div class="row">
+                            <div class="col-sm-4">
+                              <label for="First Name">First Name*</label>
+                              <input [ngClass]="{'is-invalid':f.firstName.errors}" formControlName="firstName" class="form-control" placeholder="First Name" autocomplete="First Name" required>
+                            </div>
+                            <div class=" col-sm-4">
+                              <label for="postal-code">Middle Name*</label>
+                              <input [ngClass]="{'is-invalid':f.middleName.errors}" formControlName="middleName" class="form-control" placeholder="Middle Name" autocomplete="Middle Name" required>
+                            </div>
+                            <div class=" col-sm-4">
+                                    <label for="postal-code">Last Name*</label>
+                                    <input [ngClass]="{'is-invalid':f.lastName.errors}" formControlName="lastName" class="form-control" placeholder="Last Name" autocomplete="Last Name" required>
+                                  </div>
+                          </div><!--/.row-->
+                          <div class="row">
+                                <div class=" col-sm-6">
+                                  <label for="city">Mobile Number*</label>
+                                  <input type="number" [ngClass]="{'is-invalid':f.mobileNumber.errors}" maxlength="15" formControlName="mobileNumber" class="form-control" placeholder="Mobile Number" autocomplete="Mobile Number" required>
+                                </div>
+                                <div class=" col-sm-6">
+                                  <label for="postal-code">Email*</label>
+                                  <input [ngClass]="{'is-invalid':f.email.errors}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email" class="form-control" placeholder="Email" autocomplete="Email" required>
+
+                                </div>
+                               
+                              </div><!--/.row-->
+                <div class="row">
+                  <div class=" col-sm-6">
+                    <label for="dob">Date Of Birth*</label>
+                    <input [ngClass]="{'is-invalid':f.dob.errors}" formControlName="dob" class="form-control" placeholder="Date Of Birth" autocomplete="dob" type="date">
+
+                  </div>
+                  <div class=" col-sm-6">
+                    <label for="program">Program Interested In* </label>
+                    <select  [ngClass]="{'is-invalid':f.program.errors}" formControlName="program" class="form-control" required>
+                        <option value = "" >---Select Course---</option>
+                        <option *ngFor = "let c of courseList.result" value="{{c.courseId}}">{{c.courseName}}</option>
+                        </select>
+
+                  </div>
+                </div><!--/.row-->
+                <div class="row">
+                        <div class=" col-sm-12">
+                          <label for="dob">Address*</label>
+                          <input [ngClass]="{'is-invalid':f.address.errors}" formControlName="address" class="form-control" placeholder="Address" autocomplete="address" required>
+
+                        </div>
+                        
+                      </div><!--/.row-->
+                      <div class="row">
+                            <div class=" col-sm-4">
+                              <label for="country">Country Of Residence*</label>
+                              <select [ngClass]="{'is-invalid':f.cor.errors}" formControlName="cor" class="form-control"  required>
+                              <option value="">----Select Country---</option>
+                                   <option *ngFor = "let i of Nationality.result" value={{i.NationalityId}}>{{i.NationalityName}}</option> 
+     
+                                </select> 
+                            </div>
+                            <div class=" col-sm-4">
+                              <label for="State">State*</label>
+                              <select [ngClass]="{'is-invalid':f.cityName.errors}" formControlName="cityName" class="form-control"  required>
+                              <option value="">----Select State---</option>
+                                   <option *ngFor = "let i of StateList.result" value={{i.Id}}>{{i.Name}}</option> 
+     
+                                </select> 
+                            </div>
+                            <div class=" col-sm-4">
+                                    <label for="postal-code">Student/Professional*</label>
+                                    <input [ngClass]="{'is-invalid':f.designation.errors}" formControlName="designation" class="form-control" placeholder="Student/Professional" autocomplete="designation" required>
+
+                                  </div>
+                          </div><!--/.row-->
+                          <div class="row">
+                            <div class=" col-sm-6">
+                              <label for="suo">Name of school attended*</label>
+                              <input [ngClass]="{'is-invalid':f.noi.errors}" formControlName="noi" class="form-control" placeholder="Name of school/University/Organization" autocomplete="noi" required>
+
+                            </div>
+                            <div class=" col-sm-6">
+                              <label for="suo">State*</label>
+                              <input [ngClass]="{'is-invalid':f.state.errors}" formControlName="state" class="form-control" placeholder="State" autocomplete="state" required>
+
+                            </div>
+                            
+                          </div><!--/.row-->
+
+              </div>
+              <div class="card-footer">
+                            
+                <button  type="reset" (click)="reset()" class="btn btn-sm btn-dark"><i class="angle-double-left"></i> Reset</button>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <button  type="reset" (click)="displaySignup = false; displayOtp = true;" class="btn btn-sm btn-dark"><i class="angle-double-right"></i> Already Registered Enter OTP</button>
+                    <div class="pull-right"><button type="submit" [disabled]="(signupForm.invalid)" (click)="SubmitSignup(signupForm)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                        Submit</button>
+                </div>
+                
+            </div> 
+            </div>
+          </div><!--/.col-->
+        </form>
+  
+        
+        
+      </div>
+</div>
+      
+
+
+<div class="app-body" *ngIf="displayOtp">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            
+            <div class="card-body p-4">
+              <form novalidate [formGroup]="otpForm" >
+                <h2>Enter OTP</h2>                
+                <div class="input-group mb-3" >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input [ngClass]="{'is-invalid':g.otp.errors}" formControlName="otp" class="form-control" placeholder="OTP" autocomplete="OTP" required>
+                </div>
+
+              </form>
+            </div>
+            <div class="card-footer">
+                            
+                  <div class="pull-right">
+        <button type="submit" [disabled]="(otpForm.invalid)" (click)="SubmitOtp(otpForm)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                      Submit</button>
+                      <button (click)="displaySignup = false; displayOtp = false; displayResendOtp = true;"  type="reset" class="btn btn-sm btn-dark"><i class="angle-double-right"></i> Resend OTP</button>
+
+              </div>
+              
+          </div> 
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+
+<div class="app-body" *ngIf="displayResendOtp">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form novalidate [formGroup]="resendOtpForm" >
+                  <h2>Resend OTP</h2>                
+                  <div class="input-group mb-3" >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input [ngClass]="{'is-invalid':e.phoneNumber.errors}" formControlName="phoneNumber" class="form-control" placeholder="Phone Number" autocomplete="Phone Number" required>
+                  </div>
+                  <div class="input-group mb-3" >
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                      </div>
+                      <input [ngClass]="{'is-invalid':e.email.errors}" formControlName="email" class="form-control" placeholder="Email Address" autocomplete="Email Address" required>
+                    </div>
+  
+                </form>
+              </div>
+              <div class="card-footer">
+                              
+                    <div class="pull-right">
+          <button type="submit" [disabled]="(otpForm.invalid)" (click)="SubmitResendOtp(resendOtpForm)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                        Submit</button>
+                        <button  (click)="displaySignup = true; displayOtp = false; displayResendOtp = false;" type="reset" class="btn btn-sm btn-dark"><i class="angle-double-right"></i> Cancel</button>
+  
+                </div>
+                
+            </div> 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+  
+  <div class="app-body" *ngIf="displayInstruction">
+      <main class="main d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <div class="card mx-12">
+                  <div class="card-header">
+               
+                      <h3 class="pull-left">INSTRUCTIONS</h3>           
+                     
+                    </div>
+                <div class="card-body p-12">
+                    - Duration for the test is <b>30Mins</b>.<br/><br/>
+                    - Kindly tick any one of the option given either a. or b. <br/><br/>
+                    - Think carefully before choosing an answer. <br/><br/>
+                    - You can only select an Option for each question.<br/><br/>
+                    - Kindly try to attempt maximum Questions.
+                </div>
+                <div class="card-footer">
+                                
+                      <div class="pull-right">
+                          <button type="submit" (click)="start()"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                            Start</button>
+                  </div>
+                  
+              </div> 
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  
+
+
+  
+

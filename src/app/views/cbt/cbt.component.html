@@ -1,0 +1,83 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="false"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+  
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  
+  <ul class="nav navbar-nav ml-auto"> 
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+     
+          <!-- <img src="assets/img/buidling.png" alt="Skyline" height="50" width="45"> -->
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+<br/>
+<br/>
+<br/>
+
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card mx-4">
+                            <div class="card-header">
+                                    <i class="fa fa-align-justify"></i>
+                                    <!-- <h3 class="pull-right"><countdown [config]="{ leftTime: 1200, format: 'm:s' }"></countdown></h3> -->
+                                    <h3 class="pull-right">{{displayCounter}}</h3>
+                                  </div>
+                        <div class="card-body p-4">
+                            <div class="animated fadeIn">
+<form novalidate [formGroup]="inputForm" >
+        
+
+        <div class="group-gap">
+                <h5 class="mb-3"><p> {{question}}</p></h5>
+                <div class="d-block my-3">
+
+                    <div class="custom-control custom-radio">
+                        <input id="male" type="radio" class="custom-control-input" (change)="handleAChange($event.target.checked)" value="male" name="optionControl" formControlName="optionControl">
+          <label class="custom-control-label" for="male">{{optionA}}</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input id="female" type="radio" class="custom-control-input" value="female" (change)="handleBChange($event.target.checked)" name="optionControl" formControlName="optionControl">
+          <label class="custom-control-label" for="female">{{optionB}}</label>
+        </div>
+
+        
+      </div>
+    </div>
+
+              
+</form>
+                                  
+                                       
+ 
+                                    <!-- </div> -->
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            
+                            <!-- <button (click)="Previous()" [disabled]="disabledPrevious" type="reset" class="btn btn-sm btn-dark"><i class="angle-double-left"></i> Previous</button> -->
+                            <button (click)="Next()" [disabled]="disabledNext" type="reset" class="btn btn-sm btn-dark"><i class="angle-double-right"></i> Next</button>
+                                 <div class="pull-right"> 
+                                    <b>{{pagination}}</b>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+

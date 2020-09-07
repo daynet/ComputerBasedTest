@@ -1,0 +1,97 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="false"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+  
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  
+  <ul class="nav navbar-nav ml-auto"> 
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+        <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> 
+          <!-- <img src="assets/img/buidling.png" alt="Skyline" height="50" width="45"> -->
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+<br/>
+<br/>
+<br/>
+<div class="app-body" *ngIf=examSearch>
+    <main class="main d-flex align-items-center">
+          
+       <div class="container">
+        <div class="row">
+        
+          <div class="col-md-8 mx-auto">
+            <div class="card">
+              <div class="card-header">
+                <strong>View Result</strong>
+              </div>
+              <div class="card-body">
+                <form novalidate [formGroup]="examForm">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Exam ID:</label>
+                    <div class="col-md-9">
+                      <input [ngClass]="{'is-invalid':f.psid.errors}" type="text" (input) = "validateinput($event)" formControlName="psid" class="form-control"  placeholder="Kindly enter the Exam ID" autocomplete="psid" required>
+                      <!-- <span class="help-block">Please enter the exam id</span><br/> -->
+                      <br/>
+                      <button  type="submit" [disabled]="(examForm.invalid)"  (click)="getResult(examForm)" class="btn btn-sm btn-success">View Result</button>
+                    </div>
+                  </div>
+                  
+                </form>
+              </div>
+              <div class="card-footer">
+                    <!-- <button type="button"  (click)="getresult()" class="btn btn-sm btn-success">View Result</button>
+                <button type="reset" (click)= "reset()" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
+              </div>
+            </div>
+           
+           
+         
+          </div><!--/.col-->
+        </div><!--/.row-->
+     
+      
+       
+  </div>
+
+  </main>
+      </div>
+      
+
+      <div class = "app-body" *ngIf="displayTestReport" width="1200" modal="modal" showEffect="fade">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="panel-title pull-left">
+                                Aptitude Test Report
+          
+                            </h2>
+                            <!-- <button type="button" (click)="displayReport=false" style="margin-right:5px" class="btn btn-danger pull-right">Cancel</button> -->
+          
+          
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+          
+                    <div class="col-md-12" *ngIf="displayTestReport" style=" width:1200px; overflow:auto;">
+                        <iframe [src]="reportSrc" id="report" name="report" frameborder="2" height="600px" width="1500px" style="overflow:auto"></iframe>
+                    </div>       
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <button type="button" (click)="displayReport=false" style="margin-right:5px" class="btn btn-danger pull-right">Cancel</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>

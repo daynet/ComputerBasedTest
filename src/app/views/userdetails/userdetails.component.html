@@ -1,0 +1,113 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav d-md-down-none">
+    
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+        <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> 
+          <!-- <img src="assets/img/buidling.png" alt="Skyline" height="50" width="45"> -->
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+<br/>
+<br/>
+<br/>
+
+<div class="container" *ngIf="displayTable">
+    <div class="col-lg-12" >
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> User Details
+                <!-- <span class="pull-right">
+                    <button type="button" class="btn btn-primary" [routerLink]= "['/dashboard']"
+                        >
+                        Back To Dashboard
+                    </button>
+                   
+                </span> -->
+            </div>
+
+
+            <div class="card-body">
+                    <div style="width: 1000px; height: 1000px; overflow-y: scroll;">
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr><th>S/N</th>
+                            <th>Exam ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date Of Birth</th>
+                            <th>Mobile Number</th>
+                            <th>City</th>
+                            <th>Program</th>
+                            <th>Address</th>        
+                            <th>Name Of Institution</th>
+                            <th>Exam Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let user of userList let i = index">
+                        <tr>
+                            <td>{{i + 1}}</td>
+                            <td>{{user.Psid}}</td>
+                             <td>{{user.FirstName}}</td>
+                            <td>{{user.Email}}</td>
+                            <td>{{user.DOB | date}}</td>
+                            <td>{{user.MobileNo}}</td>
+                            <td>{{user.City}}</td>
+                            <td>{{user.Program}}</td>
+                            <td>{{user.Address}}</td>
+                            <td>{{user.NOI}}</td>
+                            <td>{{user.dateTaken}}</td>
+                            
+
+                            <td>
+                              <!-- <button (click)="DeleteQuestion(question)" type="button" class="btn btn-pill btn-block btn-link">Delete</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <!-- <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul> -->
+               
+            </div>
+        </div>
+    </div>
+
+<!-- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<script>
+        $(document).ready(function () {
+            $('#table1').DataTable();
+        });
+    </script> -->
+
+
+
+   
+</div>
+
+
+

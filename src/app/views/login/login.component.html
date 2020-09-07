@@ -1,0 +1,73 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 140, height: 50, alt: 'SUN Logo'}"
+
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav d-md-down-none">
+    
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+   
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+     
+      <!-- <a class="nav nav-pills nav-justified" [routerLink]="['/home']"><i class="icon-graph"></i> &nbsp; Back to Home>>></a> -->
+          <!-- [navbarBrandFull]="{src: 'assets/img/brand/logo.png', width: 89, height: 25, alt: 'SUN Logo'}" -->
+          
+     
+    </li>
+  </ul>
+  
+</app-header>
+
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <form novalidate [formGroup]="loginFG">
+                  <h1>Login</h1>
+                  <p class="text-muted">Sign In to your account</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input [ngClass]="{'is-invalid':f.userName.errors}"  type="text" class="form-control" formControlName="userName" placeholder="Username" placeholder="Username" autocomplete="username" required>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input [ngClass]="{'is-invalid':f.password.errors}"  type="password" class="form-control" formControlName="password" placeholder="Password" autocomplete="current-password" required>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="button" (click)="Login(loginFG)" class="btn btn-primary px-4">Login</button>
+                    </div>
+                    <div class="col-6 text-right">
+                      <button type="button"  class="btn btn-link px-0" [routerLink]="['/signup']">Signup?</button>
+                      <!-- <a class="nav nav-pills nav-justified" [routerLink]="['/home']"><i class="icon-graph"></i> &nbsp; Back to Home>>></a> -->
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center">
+                <div>
+                  <img src="assets/img/new-1.jpg" alt="Skyline University Nigeria" style="width:120px;height:120px;">
+                  <p>Skyline University Nigeria</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
